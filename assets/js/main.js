@@ -50,6 +50,51 @@
     }
   }
 
+  // Mobile nav drawer
+  const navToggle = document.querySelector('[data-nav-toggle]');
+  const navDrawer = document.querySelector('[data-nav-drawer]');
+  const navBackdrop = document.querySelector('[data-nav-backdrop]');
+
+  if (navToggle instanceof HTMLButtonElement && navDrawer instanceof HTMLElement) {
+    const setOpen = (open) => {
+      document.body.classList.toggle('nav-open', open);
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+      if (navBackdrop instanceof HTMLElement) {
+        navBackdrop.toggleAttribute('hidden', !open);
+      }
+
+      if (open) {
+        const firstLink = navDrawer.querySelector('a');
+        if (firstLink instanceof HTMLElement) firstLink.focus();
+      }
+    };
+
+    const isOpen = () => document.body.classList.contains('nav-open');
+
+    navToggle.addEventListener('click', () => {
+      setOpen(!isOpen());
+    });
+
+    if (navBackdrop instanceof HTMLElement) {
+      navBackdrop.addEventListener('click', () => setOpen(false));
+    }
+
+    navDrawer.addEventListener('click', (event) => {
+      const target = event.target;
+      if (target instanceof HTMLElement && target.closest('a')) {
+        setOpen(false);
+      }
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && isOpen()) {
+        setOpen(false);
+        navToggle.focus();
+      }
+    });
+  }
+
   // Home: compact navbar on scroll
   if (document.body.classList.contains('home')) {
     const header = document.querySelector('.site-header');
