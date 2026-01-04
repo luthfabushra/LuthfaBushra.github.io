@@ -183,6 +183,9 @@
   const toTopButton = document.querySelector('[data-to-top]');
   if (toTopButton instanceof HTMLElement) {
     const showAfter = 420;
+
+    toTopButton.setAttribute('hidden', '');
+
     const setVisible = () => {
       const shouldShow = window.scrollY > showAfter;
       toTopButton.toggleAttribute('hidden', !shouldShow);
