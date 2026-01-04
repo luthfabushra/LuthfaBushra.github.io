@@ -52,10 +52,14 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
@@ -254,10 +258,12 @@ a:hover { text-decoration-thickness: 2px; }
     align-items: flex-start;
     justify-content: flex-start;
     gap: var(--s-3);
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    transform: translateX(102%);
-    transition: transform 220ms var(--ease);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 220ms var(--ease), visibility 0s 220ms;
     z-index: 90;
   }
 
@@ -290,11 +296,13 @@ a:hover { text-decoration-thickness: 2px; }
 
   body.nav-open .nav {
     transform: translateX(0);
+    visibility: visible;
+    transition: transform 220ms var(--ease), visibility 0s 0s;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .nav { transition: none; }
+  .nav { transition: none; visibility: visible; }
 }
 
 /* Sticky header (Home only) */
