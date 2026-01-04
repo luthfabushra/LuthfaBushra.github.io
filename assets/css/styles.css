@@ -134,7 +134,13 @@ a:hover { text-decoration-thickness: 2px; }
   display: inline-flex;
   align-items: center;
   gap: var(--s-4);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  white-space: nowrap;
 }
+
+.topbar-links::-webkit-scrollbar { display: none; }
 
 .topbar .icon-link {
   text-decoration: none;
@@ -164,6 +170,22 @@ a:hover { text-decoration-thickness: 2px; }
 @media (max-width: 720px) {
   .topbar-greeting { display: none; }
   .topbar-links { gap: var(--s-3); }
+}
+
+/* Header: stack brand + nav on small screens */
+@media (max-width: 720px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-4);
+  }
+
+  .brand { width: 100%; }
+
+  .nav {
+    width: 100%;
+    justify-content: flex-start;
+  }
 }
 
 /* Sticky header (Home only) */
@@ -223,6 +245,13 @@ a:hover { text-decoration-thickness: 2px; }
   height: 100px;
   border-radius: 999px;
   transition: width 180ms var(--ease), height 180ms var(--ease);
+}
+
+@media (max-width: 520px) {
+  .brand-mark img {
+    width: 84px;
+    height: 84px;
+  }
 }
 
 .brand-text {
@@ -330,6 +359,10 @@ h3 {
   max-width: 62ch;
 }
 
+@media (max-width: 520px) {
+  .lede { font-size: 1rem; }
+}
+
 .breadcrumb {
   margin: 0 0 var(--s-3);
   color: var(--muted);
@@ -349,6 +382,11 @@ h3 {
 .section { padding: var(--s-9) 0; }
 .section.compact { padding: var(--s-8) 0; }
 
+@media (max-width: 720px) {
+  .section { padding: var(--s-8) 0; }
+  .section.compact { padding: var(--s-7) 0; }
+}
+
 .kicker {
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -364,6 +402,10 @@ h3 {
 
 .hero {
   padding: var(--s-9) 0 var(--s-8);
+}
+
+@media (max-width: 720px) {
+  .hero { padding: var(--s-8) 0 var(--s-7); }
 }
 
 .hero-inner {
@@ -382,6 +424,10 @@ h3 {
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: var(--s-6);
+}
+
+@media (max-width: 520px) {
+  .hero-card { padding: var(--s-5); }
 }
 
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
@@ -434,6 +480,10 @@ h3 {
   padding: var(--s-6);
 }
 
+@media (max-width: 520px) {
+  .card { padding: var(--s-5); }
+}
+
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .card {
     background: var(--glass-bg);
@@ -470,6 +520,23 @@ h3 {
 
 .prose {
   font-size: 1.02rem;
+}
+
+@media (max-width: 520px) {
+  .prose { font-size: 1rem; }
+}
+
+/* Prevent awkward overflow from long URLs/strings */
+.prose,
+.card,
+.hero-card {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 360px) {
+  .nav { gap: var(--s-2); }
+  .nav a { padding: 0.24rem 0.45rem; }
+  .badge { font-size: 0.86rem; }
 }
 
 .prose h2 { margin-top: var(--s-7); }
