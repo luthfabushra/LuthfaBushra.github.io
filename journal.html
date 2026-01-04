@@ -69,7 +69,15 @@
 
       <nav class="nav" id="primary-nav" aria-label="Primary" data-nav-drawer>
         <a href="index.html">Home</a>
-        <a href="journal.html" aria-current="page">Journal</a>
+        <details class="nav-dropdown is-current">
+          <summary>Journal</summary>
+          <div class="nav-menu" aria-label="Journal topics">
+            <a href="journal.html" aria-current="page">All entries</a>
+            <a href="journal.html#topic-health-science">Health &amp; science</a>
+            <a href="journal.html#topic-faith-meaning">Faith &amp; meaning</a>
+            <a href="journal.html#topic-journaling">Journaling</a>
+          </div>
+        </details>
         <a href="visual-stories.html">Visual Stories</a>
         <a href="learn.html">Learn</a>
         <a href="offerings.html">Offerings</a>
@@ -95,35 +103,54 @@
         <h2>Entries</h2>
         <p class="muted">This is an archive. Each entry opens as its own page for better reading comfort.</p>
 
-        <div class="grid cols-2" style="margin-top: var(--s-6);">
-          <article class="card">
-            <div class="meta"><span class="pill">Science, simply</span><span>—</span><time datetime="2026-01-04">Jan 4, 2026</time></div>
-            <h3 style="margin-top: var(--s-3);">What “stable energy” actually means</h3>
-            <p class="muted">A gentle lens on blood sugar, stress, sleep, and why your body isn’t a math problem.</p>
-            <p style="margin-top: var(--s-4); margin-bottom: 0;"><a href="journal/2026/01/what-stable-energy-actually-means.html">Continue reading</a></p>
-          </article>
+        <section class="topic-block" id="topic-health-science" aria-label="Health and science">
+          <div class="topic-head">
+            <h3 class="topic-title">Health &amp; science</h3>
+          </div>
+          <div class="grid cols-2" style="margin-top: var(--s-5);">
+            <article class="card">
+              <div class="meta"><span class="pill">Science, simply</span><span>—</span><time datetime="2026-01-04">Jan 4, 2026</time></div>
+              <h3 style="margin-top: var(--s-3);">What “stable energy” actually means</h3>
+              <p class="muted">A gentle lens on blood sugar, stress, sleep, and why your body isn’t a math problem.</p>
+              <p style="margin-top: var(--s-4); margin-bottom: 0;"><a href="journal/2026/01/what-stable-energy-actually-means.html">Continue reading</a></p>
+            </article>
 
-          <article class="card">
-            <div class="meta"><span class="pill">Faith & meaning</span><span>—</span><time datetime="2025-12-18">Dec 18, 2025</time></div>
-            <h3 style="margin-top: var(--s-3);">On barakah in ordinary days</h3>
-            <p class="muted">A reflection on attention, gratitude, and small consistent acts.</p>
-            <p style="margin-top: var(--s-4); margin-bottom: 0;"><a href="journal/2025/12/on-barakah-in-ordinary-days.html">Continue reading</a></p>
-          </article>
+            <article class="card">
+              <div class="meta"><span class="pill">Science, simply</span><span>—</span><time datetime="2025-10-14">Oct 14, 2025</time></div>
+              <h3 style="margin-top: var(--s-3);">The most underrated health skill: recovery</h3>
+              <p class="muted">Rest isn’t weakness. It’s a physiological process you can support — on purpose.</p>
+              <p style="margin-top: var(--s-4); margin-bottom: 0;"><a href="journal/2025/10/the-most-underrated-health-skill-recovery.html">Continue reading</a></p>
+            </article>
+          </div>
+        </section>
 
-          <article class="card">
-            <div class="meta"><span class="pill">Journaling</span><span>—</span><time datetime="2025-11-02">Nov 2, 2025</time></div>
-            <h3 style="margin-top: var(--s-3);">A quiet system for journaling</h3>
-            <p class="muted">How to write without turning your life into a performance — and still learn from your own life.</p>
-            <p style="margin-top: var(--s-4); margin-bottom: 0;"><a href="journal/2025/11/a-quiet-system-for-journaling.html">Continue reading</a></p>
-          </article>
+        <section class="topic-block" id="topic-faith-meaning" aria-label="Faith and meaning">
+          <div class="topic-head">
+            <h3 class="topic-title">Faith &amp; meaning</h3>
+          </div>
+          <div class="grid cols-2" style="margin-top: var(--s-5);">
+            <article class="card">
+              <div class="meta"><span class="pill">Faith &amp; meaning</span><span>—</span><time datetime="2025-12-18">Dec 18, 2025</time></div>
+              <h3 style="margin-top: var(--s-3);">On barakah in ordinary days</h3>
+              <p class="muted">A reflection on attention, gratitude, and small consistent acts.</p>
+              <p style="margin-top: var(--s-4); margin-bottom: 0;"><a href="journal/2025/12/on-barakah-in-ordinary-days.html">Continue reading</a></p>
+            </article>
+          </div>
+        </section>
 
-          <article class="card">
-            <div class="meta"><span class="pill">Science, simply</span><span>—</span><time datetime="2025-10-14">Oct 14, 2025</time></div>
-            <h3 style="margin-top: var(--s-3);">The most underrated health skill: recovery</h3>
-            <p class="muted">Rest isn’t weakness. It’s a physiological process you can support — on purpose.</p>
-            <p style="margin-top: var(--s-4); margin-bottom: 0;"><a href="journal/2025/10/the-most-underrated-health-skill-recovery.html">Continue reading</a></p>
-          </article>
-        </div>
+        <section class="topic-block" id="topic-journaling" aria-label="Journaling">
+          <div class="topic-head">
+            <h3 class="topic-title">Journaling</h3>
+          </div>
+          <div class="grid cols-2" style="margin-top: var(--s-5);">
+            <article class="card">
+              <div class="meta"><span class="pill">Journaling</span><span>—</span><time datetime="2025-11-02">Nov 2, 2025</time></div>
+              <h3 style="margin-top: var(--s-3);">A quiet system for journaling</h3>
+              <p class="muted">How to write without turning your life into a performance — and still learn from your own life.</p>
+              <p style="margin-top: var(--s-4); margin-bottom: 0;"><a href="journal/2025/11/a-quiet-system-for-journaling.html">Continue reading</a></p>
+            </article>
+          </div>
+        </section>
       </div>
     </section>
   </main>

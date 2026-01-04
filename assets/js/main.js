@@ -55,6 +55,37 @@
   const navDrawer = document.querySelector('[data-nav-drawer]');
   const navBackdrop = document.querySelector('[data-nav-backdrop]');
 
+  // Primary-nav dropdowns (e.g., Journal topics)
+  const navDropdowns = Array.from(document.querySelectorAll('.nav-dropdown'))
+    .filter((node) => node instanceof HTMLDetailsElement);
+
+  const closeNavDropdowns = () => {
+    for (const dropdown of navDropdowns) dropdown.open = false;
+  };
+
+  if (navDropdowns.length) {
+    for (const dropdown of navDropdowns) {
+      dropdown.addEventListener('toggle', () => {
+        if (dropdown.open) {
+          for (const other of navDropdowns) {
+            if (other !== dropdown) other.open = false;
+          }
+        }
+      });
+    }
+
+    document.addEventListener('click', (event) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      const clickedInside = navDropdowns.some((dropdown) => dropdown.contains(target));
+      if (!clickedInside) closeNavDropdowns();
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeNavDropdowns();
+    });
+  }
+
   if (navToggle instanceof HTMLButtonElement && navDrawer instanceof HTMLElement) {
     // Add an in-drawer close button (keeps HTML simple across pages)
     let navClose = navDrawer.querySelector('[data-nav-close]');

@@ -399,7 +399,7 @@ a:hover { text-decoration-thickness: 2px; }
   flex-wrap: nowrap;
   gap: var(--s-3);
   justify-content: flex-end;
-  overflow-x: auto;
+  overflow: visible;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
@@ -437,6 +437,11 @@ a:hover { text-decoration-thickness: 2px; }
   font-size: 0.95rem;
 }
 
+.home .site-header.is-scrolled .nav-dropdown summary {
+  padding: 0.22rem 0.45rem;
+  font-size: 0.95rem;
+}
+
 .nav a[aria-current="page"] {
   background: color-mix(in srgb, var(--surface) 75%, var(--sand));
   border: 1px solid var(--border);
@@ -445,6 +450,135 @@ a:hover { text-decoration-thickness: 2px; }
 
 .nav a:hover {
   background: color-mix(in srgb, var(--surface) 80%, var(--bg));
+}
+
+/* Journal dropdown (primary nav) */
+.nav-dropdown {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.nav-dropdown summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.28rem 0.5rem;
+  border-radius: 999px;
+  color: color-mix(in srgb, var(--text) 85%, var(--muted));
+  transition: padding 180ms var(--ease), font-size 180ms var(--ease);
+}
+
+.nav-dropdown summary::-webkit-details-marker { display: none; }
+
+.nav-dropdown summary::after {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  opacity: 0.7;
+  margin-top: -0.1rem;
+}
+
+.nav-dropdown[open] > summary::after {
+  transform: rotate(-135deg);
+  margin-top: 0.15rem;
+}
+
+.nav-dropdown:hover > summary {
+  background: color-mix(in srgb, var(--surface) 80%, var(--bg));
+}
+
+.nav-dropdown.is-current > summary {
+  background: color-mix(in srgb, var(--surface) 75%, var(--sand));
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.nav-dropdown .nav-menu {
+  position: absolute;
+  top: calc(100% + 0.55rem);
+  right: 0;
+  min-width: 15rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: var(--s-2);
+  box-shadow: var(--glass-shadow);
+}
+
+.nav-dropdown .nav-menu a {
+  display: block;
+  text-decoration: none;
+  padding: 0.55rem 0.75rem;
+  border-radius: 12px;
+  color: color-mix(in srgb, var(--text) 85%, var(--muted));
+}
+
+.nav-dropdown .nav-menu a:hover {
+  background: color-mix(in srgb, var(--surface) 80%, var(--bg));
+}
+
+.nav-dropdown .nav-menu a[aria-current="page"] {
+  background: color-mix(in srgb, var(--surface) 75%, var(--sand));
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+@media (max-width: 720px) {
+  .nav-dropdown { width: 100%; }
+
+  .nav-dropdown summary {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    justify-content: space-between;
+  }
+
+  .nav-dropdown.is-current > summary {
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    background: color-mix(in srgb, var(--surface) 65%, var(--sand));
+  }
+
+  .nav-dropdown .nav-menu {
+    position: static;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .nav-dropdown .nav-menu a {
+    width: 100%;
+    padding: 0.55rem 0.75rem 0.55rem 1.15rem;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+}
+
+/* Topic sections (Journal page) */
+.topic-block {
+  margin-top: var(--s-8);
+}
+
+.topic-block .topic-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4);
+}
+
+.topic-block .topic-title {
+  margin: 0;
 }
 
 /* Typography */
