@@ -119,6 +119,8 @@ a:hover { text-decoration-thickness: 2px; }
 .site-header {
   border-bottom: 1px solid var(--border);
   background: color-mix(in srgb, var(--bg) 85%, var(--parchment));
+  position: relative;
+  z-index: 75;
 }
 
 /* Topbar (dismissible) */
@@ -207,7 +209,7 @@ a:hover { text-decoration-thickness: 2px; }
   position: fixed;
   inset: 0;
   background: color-mix(in srgb, var(--coffee) 35%, transparent);
-  z-index: 80;
+  z-index: 70;
 }
 
 .nav-close {
@@ -242,19 +244,19 @@ a:hover { text-decoration-thickness: 2px; }
   .nav {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     height: 100dvh;
     width: min(86vw, 340px);
     padding: calc(var(--s-7) + 10px) var(--s-6) var(--s-6);
     background: var(--surface);
-    border-right: 1px solid var(--border);
+    border-left: 1px solid var(--border);
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     gap: var(--s-3);
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    transform: translateX(-102%);
+    transform: translateX(102%);
     transition: transform 220ms var(--ease);
     z-index: 90;
   }
