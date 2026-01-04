@@ -56,6 +56,18 @@
   const navBackdrop = document.querySelector('[data-nav-backdrop]');
 
   if (navToggle instanceof HTMLButtonElement && navDrawer instanceof HTMLElement) {
+    // Add an in-drawer close button (keeps HTML simple across pages)
+    let navClose = navDrawer.querySelector('[data-nav-close]');
+    if (!(navClose instanceof HTMLButtonElement)) {
+      navClose = document.createElement('button');
+      navClose.type = 'button';
+      navClose.className = 'nav-close';
+      navClose.setAttribute('data-nav-close', '');
+      navClose.setAttribute('aria-label', 'Close menu');
+      navClose.innerHTML = '<span aria-hidden="true">×</span>';
+      navDrawer.prepend(navClose);
+    }
+
     const setOpen = (open) => {
       document.body.classList.toggle('nav-open', open);
       navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -75,6 +87,13 @@
     navToggle.addEventListener('click', () => {
       setOpen(!isOpen());
     });
+
+    if (navClose instanceof HTMLButtonElement) {
+      navClose.addEventListener('click', () => {
+        setOpen(false);
+        navToggle.focus();
+      });
+    }
 
     if (navBackdrop instanceof HTMLElement) {
       navBackdrop.addEventListener('click', () => setOpen(false));
